@@ -20,9 +20,8 @@ int main()
 	cout << "Enter set 2 (Comma seperated, values are space and case sensitive)" << endl;
 	cin >> input2;
 
-	Set set1 = Set(input1);
-	Set set2 = Set(input2);
-
+	Set set1(input1);
+	Set set2(input2);
 
 	int option = 0;
 
@@ -41,15 +40,15 @@ int main()
 		}
 		//Perform union and print result
 		if (option == 1) {
-			//Set unionSet = set1.union(set2);
+			Set unionSet = set1.unionSet(set2);
 			cout << "Union set: ";
-			//unionSet.printSet();
+			unionSet.printSet();
 		}
 		//Perform intersection and print result
 		else if (option == 2) {
-			//Set intersectionSet = set1.intersection(set2);
+			Set intersectionSet = set1.intersectionSet(set2);
 			cout << "Intersection set: ";
-			//intersectionSet.printSet();
+			intersectionSet.printSet();
 		}
 		//Perform difference and print result
 		else if (option == 3) {
