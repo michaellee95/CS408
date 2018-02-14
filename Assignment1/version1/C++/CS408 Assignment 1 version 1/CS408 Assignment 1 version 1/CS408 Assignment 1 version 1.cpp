@@ -52,9 +52,9 @@ int main()
 		}
 		//Perform difference and print result
 		else if (option == 3) {
-			//Set differenceSet = set1.difference(set2);
+			Set differenceSet = set1.differenceSet(set2);
 			cout << "Difference set: ";
-			//differenceSet.printSet();
+			differenceSet.printSet();
 		}
 		//Perform application and print result
 		else if (option == 4) {

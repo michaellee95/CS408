@@ -69,10 +69,29 @@ Set Set::intersectionSet(Set set2) {
 }
 
 Set Set::differenceSet(Set set2) {
+	Set unionSet = (*this).unionSet(set2);
+	Set intersectionSet = (*this).intersectionSet(set2);
 	vector<string> differenceSet;
 
+	bool unique = true;
+
+	for (int i = 0; i < unionSet.getSize(); i++) {
+		unique = true;
+		for (int j = 0; j < intersectionSet.getSize(); j++) {
+			if (!unionSet.getValue(i).compare(intersectionSet.getValue(j))) {
+				unique = false;
+				break;
+			}
+		}
+		if (unique)
+			differenceSet.push_back(unionSet.getValue(i));
+	}
 
 	string differenceSetAsString;
+
+	for (int i = 0; i < differenceSet.size(); i++) {
+		differenceSetAsString += differenceSet.at(i) + ",";
+	}
 
 	return Set(differenceSetAsString);
 }
