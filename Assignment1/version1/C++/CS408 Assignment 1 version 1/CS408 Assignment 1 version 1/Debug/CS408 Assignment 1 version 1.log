@@ -1,9 +1,0 @@
-﻿  Set.cpp
-c:\users\micha\desktop\projects\cs408\assignment1\version1\c++\cs408 assignment 1 version 1\cs408 assignment 1 version 1\set.cpp(12): warning C4101: 'i': unreferenced local variable
-c:\users\micha\desktop\projects\cs408\assignment1\version1\c++\cs408 assignment 1 version 1\cs408 assignment 1 version 1\set.cpp(29): warning C4018: '<': signed/unsigned mismatch
-c:\users\micha\desktop\projects\cs408\assignment1\version1\c++\cs408 assignment 1 version 1\cs408 assignment 1 version 1\set.cpp(42): warning C4018: '<': signed/unsigned mismatch
-c:\users\micha\desktop\projects\cs408\assignment1\version1\c++\cs408 assignment 1 version 1\cs408 assignment 1 version 1\set.cpp(52): warning C4018: '<': signed/unsigned mismatch
-c:\users\micha\desktop\projects\cs408\assignment1\version1\c++\cs408 assignment 1 version 1\cs408 assignment 1 version 1\set.cpp(64): warning C4018: '<': signed/unsigned mismatch
-c:\users\micha\desktop\projects\cs408\assignment1\version1\c++\cs408 assignment 1 version 1\cs408 assignment 1 version 1\set.cpp(92): warning C4018: '<': signed/unsigned mismatch
-c:\users\micha\desktop\projects\cs408\assignment1\version1\c++\cs408 assignment 1 version 1\cs408 assignment 1 version 1\set.cpp(109): warning C4018: '<': signed/unsigned mismatch
-  CS408 Assignment 1 version 1.vcxproj -> C:\Users\micha\Desktop\Projects\CS408\Assignment1\version1\C++\CS408 Assignment 1 version 1\Debug\CS408 Assignment 1 version 1.exe
