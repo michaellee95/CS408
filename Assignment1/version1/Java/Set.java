@@ -6,6 +6,12 @@ public class Set {
 	String[] set;
 	int size;
 	
+	public Set(){
+		set = new String[1];
+		set[0] = "";
+		size = 0;
+	}
+	
 	//Create a new set array that is split based on comma and only contain unique values
 	public Set (String input) {
 		//First create a temporary array that will hold the values of input split by comma
@@ -44,6 +50,23 @@ public class Set {
 	
 	public String getValue(int index) {
 		return set[index];
+	}
+	
+	//Method to add new element to set. Used for application
+	public void addElement(String input){
+		if (size == 0){
+			set[0] = input;
+			size++;
+		}
+		else{
+			String[] newSet = (String[])set.clone();
+			set = new String[set.length + 1];
+			for (int i = 0; i < newSet.length; i++) {
+				set[i] = newSet[i];
+			}
+			set[newSet.length] = input;
+			size = newSet.length+1;
+		}
 	}
 	
 	//Create a new set based on two set's union

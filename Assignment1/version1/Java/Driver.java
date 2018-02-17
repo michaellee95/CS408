@@ -27,6 +27,7 @@ public class Driver {
 		while(option != 5) {
 			System.out.println("Enter action to perform: \n 1. Union \n 2. Intersection \n 3. Difference \n "
 					+ "4. Application \n 5. Exit");
+			//Try catch in case input mismatch
 			try {
 				option = kb.nextInt();
 			}catch (Exception e) {
@@ -54,7 +55,16 @@ public class Driver {
 			}
 			//Perform application and print result
 			else if (option == 4) {
-
+				Application app = new Application();
+				app.intro();
+				Set a = new Set();
+				Set b = new Set();
+				Set c = new Set();
+				
+				for (int i = 0; i < app.neighbors.length; i++){
+					b.addElement(Integer.toString(i));
+				}
+				app.bronKerb(a, b, c);
 			}
 			//End program
 			else if (option == 5) {
