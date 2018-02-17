@@ -6,6 +6,7 @@
 
 using namespace std;
 
+//Header file for set class
 class Set {
 private:
 	vector<string> set;

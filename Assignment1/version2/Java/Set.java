@@ -16,7 +16,7 @@ public class Set {
 	public Set(String input){
 		//Create a array from input with comma as split regex
 		String[] inputAsArray = input.split(",");
-		//Cretae the head node of the set from the array's first value
+		//Create the head node of the set from the array's first value
 		head = new Node (inputAsArray[0], null, null);
 		Node current = head;
 		Node prev = null;

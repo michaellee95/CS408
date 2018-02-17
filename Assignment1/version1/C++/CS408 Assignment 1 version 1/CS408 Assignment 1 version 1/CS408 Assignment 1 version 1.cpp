@@ -16,9 +16,9 @@ int main()
 
 	//Get two user input for sets
 	cout << "Enter set 1 (Comma seperated, values are space and case sensitive)" << endl;
-	cin >> input1;
+	getline(cin, input1);
 	cout << "Enter set 2 (Comma seperated, values are space and case sensitive)" << endl;
-	cin >> input2;
+	getline(cin, input2);
 
 	Set set1(input1);
 	Set set2(input2);
@@ -34,7 +34,6 @@ int main()
 
 		//Catch input mismatch
 		if (cin.fail()) {
-			cout << "Unknown Input" << endl;
 			cin.clear();
 			cin.ignore(numeric_limits <streamsize>::max(), '\n');
 		}
@@ -66,7 +65,7 @@ int main()
 			exit(0);
 		}
 		else
-			cout << "Input is not part of choice";
+			cout << "Input is not part of choice" << endl;
 
 
 
