@@ -84,6 +84,7 @@ void Application::intro() {
 			break;
 		}
 
+		//add edges
 		neighbors.at(first).addNode(to_string(second));
 		neighbors.at(second).addNode(to_string(first));
 
@@ -115,25 +116,26 @@ void Application::bronKerb(Set a, Set b, Set c) {
 	}
 
 	else {
-		b.current = b.getHead();
-		while (b.current != NULL) {
+		Set::nodePtr current = b.getHead();
+		while (current != NULL) {
 			Set v;
-			v.addNode(b.current->value);
+			v.addNode(current->value);
 			
 			Set newA = a + v;
-			Set newB = b ^ neighbors.at(stoi(b.getHead()->value));
-			Set newC = c ^ neighbors.at(stoi(b.getHead()->value));
+			Set newB = b ^ neighbors.at(stoi(current->value));
+			Set newC = c ^ neighbors.at(stoi(current->value));
 
 			bronKerb(newA, newB, newC);
 			b = b - v;
 			c = c + v;
 
-			b.current = b.getNext(b.current);
+			current = current->next;
 
 		}
 	}
 }
 
+//Method to get size of the vertex
 int Application::getSize() {
 	return neighbors.size();
 }
