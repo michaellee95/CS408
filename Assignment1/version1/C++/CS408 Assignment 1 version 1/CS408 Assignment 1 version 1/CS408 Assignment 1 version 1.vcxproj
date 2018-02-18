@@ -155,7 +155,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
-    <ClCompile Include="CS408 Assignment 1 version 1.cpp" />
+    <ClCompile Include="Driver.cpp" />
     <ClCompile Include="Set.cpp" />
     <ClCompile Include="stdafx.cpp" />
   </ItemGroup>
