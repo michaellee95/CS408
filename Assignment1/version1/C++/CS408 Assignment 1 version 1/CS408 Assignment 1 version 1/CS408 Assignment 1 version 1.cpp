@@ -7,6 +7,7 @@
 #include <string>
 #include <limits>
 #include <exception>
+#include <chrono>
 
 using namespace std;
 
@@ -67,7 +68,18 @@ int main()
 			for (int i = 0; i < app.getSize(); i++) {
 				b.addElement(to_string(i));
 			}
-			app.bronKerb(a, b, c);
+			
+			//auto start = std::chrono::high_resolution_clock::now();
+
+			//for (int i = 0; i < 100; i++)
+				app.bronKerb(a, b, c);
+
+			//auto finish = std::chrono::high_resolution_clock::now();
+
+			//std::chrono::duration<double> elapsedTime = finish - start;
+
+			//cout << "elapsed time: " << elapsedTime.count();
+			//cout << "average time" << elapsedTime.count() / 100;
 		}
 		//End program
 		else if (option == 5) {
