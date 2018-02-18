@@ -64,9 +64,9 @@ int main()
 			Set b;
 			Set c;
 
-			/*for (int i = 0; i < app.getSize(); i++) {
-				b.addElement(to_string(i));
-			}*/
+			for (int i = 0; i < app.getSize(); i++) {
+				b.addNode(to_string(i));
+			}
 			app.bronKerb(a, b, c);
 		}
 		//End program

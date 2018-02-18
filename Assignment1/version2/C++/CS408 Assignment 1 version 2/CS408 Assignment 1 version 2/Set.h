@@ -15,15 +15,21 @@ private:
 
 	nodePtr head;
 	nodePtr end;
+	int size;
 
 public:
+	nodePtr current;
 	Set(string input);
 	Set();
 	Set operator + (Set &);
 	Set operator ^ (Set &);
 	Set operator - (Set &);
 	void printSet();
-	void addNode(nodePtr newNode);
+	void addNode(nodePtr);
+	void addNode(string);
+	nodePtr getNext(nodePtr);
+	nodePtr getHead();
+	int getSize();
 };
 
 #endif 

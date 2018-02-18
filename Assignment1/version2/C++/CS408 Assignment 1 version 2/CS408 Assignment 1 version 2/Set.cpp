@@ -11,6 +11,7 @@ using namespace std;
 Set::Set() {
 	head = NULL;
 	end = NULL;
+	size = 0;
 }
 
 //Constructor for set when input is given
@@ -47,6 +48,7 @@ Set::Set(string input) {
 			head = newNode;
 			end = newNode;
 		}
+		size++;
 	}
 }
 
@@ -68,6 +70,28 @@ void Set::addNode(nodePtr passedNode) {
 		head = newNode;
 		end = newNode;
 	}
+	size++;
+}
+
+//Method to add new node to set
+void Set::addNode(string input) {
+
+	//Create a new node and pass the value from passed node
+	nodePtr newNode = new node;
+	newNode->value = input;
+	newNode->next = NULL;
+
+	//if head is not null just add to end of set
+	//else new node becomes head
+	if (head != NULL) {
+		end->next = newNode;
+		end = newNode;
+	}
+	else {
+		head = newNode;
+		end = newNode;
+	}
+	size++;
 }
 
 //Method to find union of two sets
@@ -179,4 +203,16 @@ void Set::printSet() {
 		current = current->next;
 	}
 	cout << endl;
+}
+
+Set::nodePtr Set::getNext(nodePtr current) {
+	return current->next;
+}
+
+Set::nodePtr Set::getHead() {
+	return head;
+}
+
+int Set::getSize() {
+	return size;
 }
