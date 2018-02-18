@@ -18,7 +18,7 @@ private:
 
 public:
 	Set(string input);
-	Set(int null);
+	Set();
 	Set operator + (Set &);
 	Set operator ^ (Set &);
 	Set operator - (Set &);

@@ -9,6 +9,11 @@ using namespace std;
 
 //.cpp file for Set class
 //Get user input
+
+Set::Set() {
+	size = 0;
+}
+
 Set::Set(string input) {
 	stringstream ss(input);
 	string value;
@@ -118,12 +123,19 @@ int Set::getSize() {
 	return size;
 }
 
+vector<string> Set::getSet() {
+	return set;
+}
+
+void Set::addElement(string input) {
+	set.push_back(input);
+	size = set.size();
+}
+
 //Method for printing values of set
 void Set::printSet() {
-	string prefix = "";
 	for (int i = 0; i < set.size(); i++) {
-		cout << prefix + set.at(i);
-		prefix = ",";
+		cout << set.at(i) + " ";
 	}
 
 	cout << endl;

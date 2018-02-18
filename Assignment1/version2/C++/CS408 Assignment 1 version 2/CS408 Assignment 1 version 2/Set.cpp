@@ -8,7 +8,7 @@
 using namespace std;
 
 //Constructor to create empty set
-Set::Set(int null) {
+Set::Set() {
 	head = NULL;
 	end = NULL;
 }
@@ -73,7 +73,7 @@ void Set::addNode(nodePtr passedNode) {
 //Method to find union of two sets
 Set Set::operator + (Set &set2) {
 
-	Set unionSet(0);
+	Set unionSet;
 	nodePtr current = head;
 
 
@@ -111,7 +111,7 @@ Set Set::operator + (Set &set2) {
 
 //Method to find intersection of two sets
 Set Set::operator ^ (Set &set2) {
-	Set intersectionSet(0);
+	Set intersectionSet;
 	nodePtr set1Current = head;
 	nodePtr set2Current = set2.head;
 
@@ -138,7 +138,7 @@ Set Set::operator - (Set &set2) {
 	//Get the union and intersection set
 	Set unionSet = (*this) + (set2);
 	Set intersectionSet = (*this) ^ (set2);
-	Set differenceSet(0);
+	Set differenceSet;
 
 	nodePtr unionSetCurrent = unionSet.head;
 	nodePtr intersectionSetCurrent = intersectionSet.head;
@@ -172,12 +172,10 @@ Set Set::operator - (Set &set2) {
 //Method to print values in set
 void Set::printSet() {
 	nodePtr current = head;
-	string prefix = "";
 
 	//Loop from head and print value held in each node
 	while (current != NULL) {
-		cout << prefix + current->value;
-		prefix = ",";
+		cout << current->value + " ";
 		current = current->next;
 	}
 	cout << endl;

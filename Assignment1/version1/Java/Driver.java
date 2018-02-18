@@ -1,5 +1,3 @@
-package individual.v1;
-
 import java.util.Scanner;
 
 /*Driver class. Takes user input for two sets

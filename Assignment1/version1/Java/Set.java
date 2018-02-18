@@ -1,5 +1,3 @@
-package individual.v1;
-
 //Set class using arrays
 public class Set {
 
@@ -150,10 +148,8 @@ public class Set {
 	
 	//Print all values stored in this set
 	public void printSet() {
-		String prefix = "";
 		for (int i = 0; i < set.length; i++) {
-			System.out.print(prefix + set[i]);
-			prefix = ",";
+			System.out.print(set[i] + " ");
 		}
 		System.out.println();
 	}

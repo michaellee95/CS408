@@ -1,5 +1,3 @@
-package individual.v1;
-
 import java.io.*;
 import java.util.Scanner;
 
@@ -20,9 +18,14 @@ public class Application {
 		while(true){
 			try{
 				nodes = kb.nextInt();
+				if (nodes < 2){
+					System.out.println("There must be a minimum of 2 nodes");
+					continue;
+				}				
 				break;
 			}catch(Exception e){
-				System.out.println("Enter a number");
+				System.out.print("Enter a number");
+				kb.nextLine();
 			}	
 		}
 
@@ -37,25 +40,44 @@ public class Application {
 						+ "to set an edge, enter the two nodes individually.");
 		String cont = "y";
 		
+		int first = 0;
+		int second = 0;
+		
 		//Get input to create edge
 		while (cont.equalsIgnoreCase("y")){
-			System.out.println("first node index: ");
-			int first = kb.nextInt();
-			System.out.println("Second node index: ");
-			int second = kb.nextInt();
+			while(true){
+				try{
+					System.out.print("first node index: ");
+					first = kb.nextInt();
+					if (first >= nodes || first < 0){
+						System.out.println("Input out of index");
+						continue;
+					}
+					System.out.print("Second node index: ");
+					second = kb.nextInt();
+					if (second >= nodes || second < 0){
+						System.out.println("Input out of index");
+						continue;
+					}
+					break;
+				}catch(Exception e){
+					System.out.println("Enter a number");
+					kb.nextLine();
+				}	
+			}
 
 			neighbors[first].addElement(Integer.toString(second));
 			neighbors[second].addElement(Integer.toString(first));
 
 			System.out.println("Edge between node " + first
-					+ " and " + second + " has been made");
+							+ " and " + second + " has been made");
 			kb.nextLine();
-			System.out.println("Continue? y/n");
+			System.out.print("Continue? y/n: ");
 			cont = kb.nextLine();
 			//Ask user if they wish to continue adding edge
 			//Loop question if answer is not y/n
 			while(!cont.equalsIgnoreCase("y") && !cont.equalsIgnoreCase("n")){
-				System.out.println("Invalid input enter y/n");
+				System.out.print("Invalid input enter y/n: ");
 				cont = kb.nextLine();
 			}
 		}
@@ -63,10 +85,12 @@ public class Application {
 
 	// method that implements the actual Bron-Kerb
 	public void bronKerb(Set a, Set b, Set c) {
+		//Maximal clique found
 		if (b.size == 0 && c.size == 0) {
 			System.out.print("Maximal Clique: ");
 			a.printSet();
 		} 
+		
 		//This else if is supposed to be empty
 		else if (b.size == 0 && c.size != 0) {
 		} 
@@ -76,11 +100,11 @@ public class Application {
 			while (b.size != 0) {
 				Set v = new Set(b.set[0]);
 
-				Set newR = a.union(v);
-				Set newP = b.intersection(neighbors[Integer.parseInt(b.set[0])]);
-				Set newX = c.intersection(neighbors[Integer.parseInt(b.set[0])]);
+				Set newA = a.union(v);
+				Set newB = b.intersection(neighbors[Integer.parseInt(b.set[0])]);
+				Set newC = c.intersection(neighbors[Integer.parseInt(b.set[0])]);
 
-				bronKerb(newR, newP, newX);
+				bronKerb(newA, newB, newC);
 				b = b.difference(v);
 				c = c.union(v);
 			}

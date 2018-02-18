@@ -1,4 +1,4 @@
-package individual.v2;
+
 
 public class Set {
 	
@@ -172,11 +172,9 @@ public class Set {
 	//Method to print set
 	public void printSet(){
 		Node current = head;
-		String prefix = "";
 		//Loop through set starting from head and print value held in current node
 		while (current != null){
-			System.out.print(prefix + current.getValue());
-			prefix = ",";
+			System.out.print(current.getValue() + " ");
 			current = current.getNext();
 		}
 		System.out.println();

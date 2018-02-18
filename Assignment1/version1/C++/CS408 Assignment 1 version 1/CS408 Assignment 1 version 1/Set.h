@@ -13,13 +13,16 @@ private:
 	int size;
 
 public:
+	Set();
 	Set(string input);
 	Set operator + (Set &);
 	Set operator ^ (Set &);
 	Set operator - (Set &);
 	string getValue(int index);
+	void addElement(string input);
 	int getSize();
 	void printSet();
+	vector<string> getSet();
 };
 
 #endif 

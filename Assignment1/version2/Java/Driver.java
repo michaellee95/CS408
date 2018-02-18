@@ -1,4 +1,3 @@
-package individual.v2;
 
 import java.util.Scanner;
 
@@ -54,7 +53,16 @@ public class Driver {
 			}
 			//Perform application and print result
 			else if (option == 4) {
-
+				Application app = new Application();
+				app.intro();
+				Set a = new Set();
+				Set b = new Set();
+				Set c = new Set();
+				
+				for (int i = 0; i < app.neighbors.length; i++){
+					b.add(Integer.toString(i));
+				}
+				app.bronKerb(a, b, c);
 			}
 			//End program
 			else if (option == 5) {

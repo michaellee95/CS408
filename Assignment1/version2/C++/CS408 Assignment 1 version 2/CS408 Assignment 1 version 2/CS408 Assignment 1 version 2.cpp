@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "Set.h"
+#include "Application.h"
 #include <string>
 #include <limits>
 #include <exception>
@@ -57,12 +58,21 @@ int main()
 		}
 		//Perform application and print result
 		else if (option == 4) {
+			Application app;
+			app.intro();
+			Set a;
+			Set b;
+			Set c;
 
+			/*for (int i = 0; i < app.getSize(); i++) {
+				b.addElement(to_string(i));
+			}*/
+			app.bronKerb(a, b, c);
 		}
 		//End program
 		else if (option == 5) {
 			cout << "Exiting program";
-			exit(0);
+			return 0;
 		}
 		else
 			cout << "Input is not part of choice" << endl;
