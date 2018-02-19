@@ -84,6 +84,7 @@ void Application::intro() {
 			break;
 		}
 
+		//add edges
 		neighbors.at(first).addElement(to_string(second));
 		neighbors.at(second).addElement(to_string(first));
 

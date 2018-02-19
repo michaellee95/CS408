@@ -7,18 +7,13 @@ using namespace std;
 
 //Header file for set class
 class Set {
-private:
+
+public:
 	typedef struct node {
 		string value;
 		node* next;
-	}* nodePtr;
+	}*nodePtr;
 
-	nodePtr head;
-	nodePtr end;
-	int size;
-
-public:
-	nodePtr current;
 	Set(string input);
 	Set();
 	Set operator + (Set &);
@@ -27,9 +22,13 @@ public:
 	void printSet();
 	void addNode(nodePtr);
 	void addNode(string);
-	nodePtr getNext(nodePtr);
 	nodePtr getHead();
 	int getSize();
+
+private:
+	nodePtr head;
+	nodePtr end;
+	int size;
 };
 
 #endif 

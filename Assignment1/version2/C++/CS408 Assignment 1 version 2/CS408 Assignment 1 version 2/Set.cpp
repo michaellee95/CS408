@@ -193,6 +193,16 @@ Set Set::operator - (Set &set2) {
 	return differenceSet;
 }
 
+//Method to get the head of the set
+Set::nodePtr Set::getHead() {
+	return head;
+}
+
+//Method to get size of set
+int Set::getSize() {
+	return size;
+}
+
 //Method to print values in set
 void Set::printSet() {
 	nodePtr current = head;
@@ -203,16 +213,4 @@ void Set::printSet() {
 		current = current->next;
 	}
 	cout << endl;
-}
-
-Set::nodePtr Set::getNext(nodePtr current) {
-	return current->next;
-}
-
-Set::nodePtr Set::getHead() {
-	return head;
-}
-
-int Set::getSize() {
-	return size;
 }

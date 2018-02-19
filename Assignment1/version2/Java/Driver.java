@@ -62,7 +62,15 @@ public class Driver {
 				for (int i = 0; i < app.neighbors.length; i++){
 					b.add(Integer.toString(i));
 				}
-				app.bronKerb(a, b, c);
+				
+				//long startTime = System.nanoTime();
+				//for (int i = 0; i < 100; i++)
+					app.bronKerb(a, b, c);
+				//long endTime = System.nanoTime();
+				//long duration = (endTime - startTime);
+				//long average = duration/100;
+				//System.out.println("Total duration for 100 runs: " + duration + " nanoseconds");
+				//System.out.println("Average duration: " + average + " nanoseconds");
 			}
 			//End program
 			else if (option == 5) {
