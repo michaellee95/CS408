@@ -1,0 +1,49 @@
+//Driver class that will fetch, create, delete, and update accounts
+public with sharing class Driver {
+
+    public void driver(){
+        fetchAccount();
+        createAccount();
+        deleteAccount();
+        updateAccount();
+    }
+
+	//method for fetching all accounts from the database    
+    public void fetchAccount(){
+        Account[] accts = [SELECT Id, Name FROM Account];
+        
+        for (Account accounts : accts){
+            System.debug(accounts.name);
+        }
+    }
+    
+    //method for creating a new account and pushing to database
+    public void createAccount(){
+        Account acct = new Account(Name = 'Raheja');
+        Account acct2 = new Account();
+        
+        try{
+            insert acct;
+            insert acct2;         
+        }catch(Exception e){
+            System.debug('error while creating account');
+        }
+    }
+    
+    //method for deleting an account from database
+    public void deleteAccount(){
+        Account delAcct = [SELECT Id, Name FROM Account WHERE Name = 'sForce']; 
+        try{
+            delete delAcct;
+        }catch (Exception e){
+            System.debug('Error during deletion');
+        }
+    }
+    
+    //method for updating an account in the database
+    public void updateAccount(){
+        Account updateAccount = [SELECT Id, Name FROM Account WHERE Name = 'University of Arizona']; 
+        updateAccount.Name = 'University of Too Hot in Arizona';
+        update updateAccount;
+    }
+}

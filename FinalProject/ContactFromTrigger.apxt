@@ -1,0 +1,7 @@
+//Trigger class that will start once an account has been inserted into the database
+trigger ContactFromTrigger on Account (after insert) {
+
+    //Call the CreateContactFromTrigger class
+    CreateContactFromTrigger cc = new CreateContactFromTrigger();
+    cc.createContactFromTrigger(Trigger.new);
+}

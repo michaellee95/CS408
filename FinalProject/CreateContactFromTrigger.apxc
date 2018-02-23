@@ -1,0 +1,19 @@
+//Class that will start once trigger awakens it
+public class CreateContactFromTrigger {
+    
+    //Create a new contact for the newly created account
+    public void createContactFromTrigger(List<Account> acctFromTrigger){
+        Account acct =  [SELECT Id, Name FROM Account WHERE Name = 'Bob'];
+        
+        Contact cont = new Contact();
+        cont.AccountId = acct.Id;
+        cont.firstName = 'Sally';
+        cont.LastName = 'Lee';
+        
+        try{
+         	insert cont;   
+        }catch(Exception e){
+            System.debug('Error when trying to create contact from trigger');
+        } 
+    }
+}
