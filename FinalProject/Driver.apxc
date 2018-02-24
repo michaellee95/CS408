@@ -46,4 +46,17 @@ public with sharing class Driver {
         updateAccount.Name = 'University of Too Hot in Arizona';
         update updateAccount;
     }
+    
+    //Before creating a new contact, change the first name to Sally
+    public void createContactFromTrigger(List<Contact> contactFromTrigger){
+    	Contact cont = contactFromTrigger[0];
+        
+        cont.FirstName = 'Sally';
+        
+        try{
+         	insert cont;   
+        }catch(Exception e){
+            System.debug('Error when trying to create contact from trigger');
+        } 
+    }    
 }
