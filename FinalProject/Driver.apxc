@@ -2,10 +2,10 @@
 public with sharing class Driver {
 
     public void driver(){
-        fetchAccount();
+        //fetchAccount();
         createAccount();
-        deleteAccount();
-        updateAccount();
+        //deleteAccount();
+        //updateAccount();
     }
 
 	//method for fetching all accounts from the database    
@@ -19,12 +19,13 @@ public with sharing class Driver {
     
     //method for creating a new account and pushing to database
     public void createAccount(){
-        Account acct = new Account(Name = 'Raheja');
-        Account acct2 = new Account();
+        List<Account> accountsToAdd = new List<Account>();
+        accountsToAdd.add(new Account(Name = 'Raheja'));
+        accountsToAdd.add(new Account ());
         
         try{
-            insert acct;
-            insert acct2;         
+            //insert accountsToAdd;
+            Database.insert(accountsToAdd, false);
         }catch(Exception e){
             System.debug('error while creating account');
         }
@@ -46,17 +47,4 @@ public with sharing class Driver {
         updateAccount.Name = 'University of Too Hot in Arizona';
         update updateAccount;
     }
-    
-    //Before creating a new contact, change the first name to Sally
-    public void createContactFromTrigger(List<Contact> contactFromTrigger){
-    	Contact cont = contactFromTrigger[0];
-        
-        cont.FirstName = 'Sally';
-        
-        try{
-         	insert cont;   
-        }catch(Exception e){
-            System.debug('Error when trying to create contact from trigger');
-        } 
-    }    
 }

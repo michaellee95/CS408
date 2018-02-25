@@ -1,7 +1,28 @@
-//Trigger class that will start once an account has been inserted into the database
-trigger ContactFromTrigger on Account (after insert) {
+//Trigger class that will activate before a contact is created/updated
+trigger ContactFromTrigger on Contact (before insert, before update) {
+    
+    Set<String> newEmails = new Set <String> ();
 
-    //Call the CreateContactFromTrigger class
-    CreateContactFromTrigger cc = new CreateContactFromTrigger();
-    cc.createContactFromTrigger(Trigger.new);
+    //Add list of emails that were used in creation
+    for( Contact currentContact : Trigger.new){
+        newEmails.add(currentContact.Email);
+    }
+
+    //Get list of contacts that used same emails
+    List<Contact> listOfContacts = [SELECT Id, Name, Email FROM Contact WHERE Email in :newEmails];
+
+	Set<String> usedEmails = new Set<String> ();
+
+    //For each contact that were created using a existing email
+    //add a error notification
+	for( Contact currentContact: listOfContacts)
+	{
+    	usedEmails.add(currentContact.Email);
+    }
+    
+	for( Contact currentContact : Trigger.new){
+    	if(usedEmails.Contains(currentContact.Email)){
+        	currentContact.AddError('That email is already in use');
+    	}
+	}
 }
