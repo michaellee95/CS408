@@ -1,0 +1,44 @@
+@RestResource(urlMapping='/Account/*')
+global with sharing class AccountRestResuorce{
+
+    @HttpPost
+    global static String doPost(String name){
+        Account account = new Account();
+        account.Name = name;
+        try{
+            insert account;
+            return account.Id;
+        }catch(Exception e){
+            System.debug('Error when inserting account');
+        }
+        return null;
+    }
+    
+    @HttpDelete
+    global static void doDelete(){
+        RestRequest req = RestContext.request;
+        RestResponse res = RestContext.response;
+        String accountId = req.requestURI.substring(req.requestURI.lastIndexOf('/')+1);
+        Account account = [SELECT Id FROM Account WHERE Id = :accountId];
+        try{
+            delete account;
+        }catch(Exception e){
+            System.debug('Error when deleting account');
+        }    
+    }
+    
+    @HttpGET
+    global static Account doGet(){
+        RestRequest req = RestContext.request;
+        RestResponse res = RestContext.response;
+        String accountId = req.requestURI.substring(req.requestURI.lastIndexOf('/')+1);
+        Account result= [SELECT Id FROM Account WHERE Id = :accountId];
+        try{
+            return result;
+        }catch(Exception e){
+            System.debug('Error could not fetch account');
+        }
+        return null;
+    }
+    
+}

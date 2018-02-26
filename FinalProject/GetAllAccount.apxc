@@ -1,0 +1,14 @@
+@RestResource(urlMapping='/GetAllAccounts/*')
+global with sharing class GetAllAccount{
+
+    @HttpGET
+    global static List<Account> getAllAccount(){
+        List<Account> listOfAccounts = [SELECT Id, Name FROM Account];
+        try{
+            return listOfAccounts;
+        }catch(Exception e){
+            System.debug('Error could not fetch accounts');
+        }
+        return null;
+    }    
+}
