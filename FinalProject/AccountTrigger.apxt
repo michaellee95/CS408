@@ -1,0 +1,10 @@
+//Trigger that occur whenever accounts that carry the name 'Player' are updated
+trigger AccountTrigger on Account (after update) {
+    
+    //Print out current status of game
+    for( Account currentAccount : Trigger.new){
+        if (currentAccount.Name.contains('Player')){
+        	System.debug(currentAccount.Name + ' currently has: $' + currentAccount.Money__c + ' and is ranked ' + currentAccount.Rank__c);
+        }
+    }
+}

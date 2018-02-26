@@ -12,3 +12,8 @@ public class insert{
 		stmt.executeUpdate(q1);
 	}
 }
+
+
+
+
+

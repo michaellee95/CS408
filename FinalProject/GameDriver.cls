@@ -5,6 +5,7 @@ public class GameDriver {
     public Long startTime;
     public Long endTime;
     public Long runTime;
+    public List<String> message = new List<String>();
     
     //Default game starts with 4 players without input
     public void gameDriver(){
@@ -52,7 +53,8 @@ public class GameDriver {
                 update listOfPlayers;
             }catch(Exception e){
                 System.debug('Error when updating players');
-            }                
+            }
+            listOfPlayers = [SELECT Id, Name, Money__c, Rank__c FROM Account WHERE Name LIKE 'Player%'];
             turnCount++;
         }
         endGame();
@@ -117,10 +119,11 @@ public class GameDriver {
         }    
     } 
     
-    //End game by printing out results and deleting the created accounts
-    public void endGame(){
+    //End game by printing out/storing results and deleting the created accounts
+    public List<String> endGame(){
         for (Account currentPlayer : listOfPlayers){
             System.debug(currentPlayer.Name + ' ended with: $' + currentPlayer.Money__c + ' and ranked ' + currentPlayer.Rank__c);
+            message.add(currentPlayer.Name + ' ended with: $' + currentPlayer.Money__c + ' and ranked ' + currentPlayer.Rank__c);
         }
 
         try{
@@ -134,5 +137,7 @@ public class GameDriver {
     	endTime = now.getTime();
         runTime = endTime - startTime;
         System.debug('Runtime: ' + runTime);
+        message.add('Runtime: ' + runTime);
+        return message;
     }
 }

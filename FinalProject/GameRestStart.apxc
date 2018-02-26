@@ -1,0 +1,36 @@
+//Rest architecture
+//Starts game if url is startgame
+@RestResource(urlMapping='/StartGame/*')
+global with sharing class GameRestStart{
+
+    @HttpGET
+    global static List<String> start(){
+        //Start new game
+        GameDriver driver = new GameDriver();
+        RestRequest req = RestContext.request;
+        RestResponse res = RestContext.response;
+        String lastIndex = req.requestURI.subString(req.requestURI.lastIndexOf('/')+1); 
+        integer numberOfPlayers;
+        //Depending on whether the amount of players have been specified start game with specified number of players
+        //or default 4 number of players or if the numbers are too large/small send error message
+        if (!String.isEmpty(lastIndex)){
+        	numberOfPlayers = integer.valueOf(lastIndex);            
+        }
+        else
+            numberOfPlayers = 4;
+        
+        if (numberOfPlayers == null){
+            driver.gameDriver();
+        }
+        else if (numberOfPlayers >= 2 && numberOfPlayers <= 10){
+            driver.gameDriver(numberOfPlayers);
+        }
+        else{
+            List<String> errorList = new List<String>();
+            errorList.add('Error when starting game');
+            return errorList;
+        }
+        
+        return driver.message;
+    }    
+}
