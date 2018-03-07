@@ -1,11 +1,11 @@
 //Demo class
-public class GameDriver {
+public with sharing class GameDriver implements Game{
 
-    public List<Account> listOfPlayers = new List<Account>();
-    public Long startTime;
-    public Long endTime;
-    public Long runTime;
-    public List<String> message = new List<String>();
+    private List<Account> listOfPlayers = new List<Account>();
+    private Long startTime;
+    private Long endTime;
+    private Long runTime;
+    private List<String> message = new List<String>();
     
     //Default game starts with 4 players without input
     public void gameDriver(){
@@ -54,7 +54,6 @@ public class GameDriver {
             }catch(Exception e){
                 System.debug('Error when updating players');
             }
-            listOfPlayers = [SELECT Id, Name, Money__c, Rank__c FROM Account WHERE Name LIKE 'Player%'];
             turnCount++;
         }
         endGame();
@@ -120,7 +119,7 @@ public class GameDriver {
     } 
     
     //End game by printing out/storing results and deleting the created accounts
-    public List<String> endGame(){
+    public void endGame(){
         for (Account currentPlayer : listOfPlayers){
             System.debug(currentPlayer.Name + ' ended with: $' + currentPlayer.Money__c + ' and ranked ' + currentPlayer.Rank__c);
             message.add(currentPlayer.Name + ' ended with: $' + currentPlayer.Money__c + ' and ranked ' + currentPlayer.Rank__c);
@@ -138,6 +137,9 @@ public class GameDriver {
         runTime = endTime - startTime;
         System.debug('Runtime: ' + runTime);
         message.add('Runtime: ' + runTime);
-        return message;
+    }
+    
+    public List<String> getResult(){
+		return message;        
     }
 }

@@ -1,0 +1,12 @@
+//interface for GameDrivers
+public interface Game {
+
+    void gameDriver();
+    void gameDriver(integer playerCount);
+    void gameSetup(integer playerCount);
+    void start();
+    void turn();
+    void resolveRank();
+    void endGame();
+    List<String> getResult();
+}
